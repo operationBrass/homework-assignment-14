@@ -1,0 +1,30 @@
+{
+  "name": "tech-blog",
+  "version": "1.0.0",
+  "description": "A tech related blog",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/operationBrass/homework-assignment-14.git"
+  },
+  "keywords": [
+    "blog",
+    "tech"
+  ],
+  "author": "Brendan Lewis",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/operationBrass/homework-assignment-14/issues"
+  },
+  "homepage": "https://github.com/operationBrass/homework-assignment-14#readme",
+  "dependencies": {
+    "bootflat": "^2.0.4",
+    "bulma": "^0.9.3",
+    "express": "^4.17.1",
+    "node": "^16.4.1",
+    "sequelize": "^6.6.5"
+  }
+}

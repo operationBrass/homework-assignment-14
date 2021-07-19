@@ -19,36 +19,45 @@
           <strong> GET POST! </strong>
         </p>
 
-        <form class="box">
+        <form id="login-form" class="box">
           <div class="field">
-            <label class="label">Username</label>
-            <div class="control has-icons-left has-icons-right">
+            <p class="control has-icons-left has-icons-right">
               <input
-                class="input is-success is-light"
-                type="text"
-                placeholder=""
-                value=""
+                id="email"
+                class="input"
+                type="email"
+                placeholder="Email"
               />
-            </div>
+              <span class="icon is-small is-left">
+                <i class="fas fa-envelope"></i>
+              </span>
+
+              <span class="icon is-small is-right">
+                <i class="fas fa-check"></i>
+              </span>
+            </p>
+            <br />
+
+            <p class="control has-icons-left">
+              <input
+                id="password"
+                class="input"
+                type="password"
+                placeholder="Password"
+              />
+              <span class="icon is-small is-left">
+                <i class="fas fa-lock"></i>
+              </span>
+            </p>
           </div>
 
-          <div class="field">
-            <label class="label">Password</label>
-
-            <input
-              class="input is-success is-light"
-              type="text"
-              placeholder=""
-              value=""
-            />
-          </div>
-
-          <div class="control">
-            <button class="button is-primary">Login</button>
+          <p class="control">
+            <input class="button is-success" type="submit" value="Login" />
             <button class="button is-info">Register</button>
-          </div>
+          </p>
         </form>
       </div>
     </section>
+    <script src="./resources/js/login.js"></script>
   </body>
 </html>

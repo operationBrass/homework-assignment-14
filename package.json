@@ -2,9 +2,10 @@
   "name": "tech-blog",
   "version": "1.0.0",
   "description": "A tech related blog",
-  "main": "index.js",
+  "main": "node index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "index.js"
   },
   "repository": {
     "type": "git",
@@ -23,7 +24,11 @@
   "dependencies": {
     "bootflat": "^2.0.4",
     "bulma": "^0.9.3",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "express-handlebars": "^5.3.2",
+    "express-session": "^1.17.2",
+    "mysql2": "^2.2.5",
     "node": "^16.4.1",
     "sequelize": "^6.6.5"
   }

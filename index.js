@@ -10,8 +10,7 @@ const {Post, Member} = require("./models/index")
 const sequelize = require('./config/connection');
 
 //routers
-const homeRouter = require('./routes/home');
-const userRouter = require('./routes/dashboard');
+const routers = require('./routes');
 
 
 // assign express object
@@ -31,8 +30,7 @@ app.use(express.static(path.join(__dirname, 'public'))); // retrieve css and js 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-//app.use('/',homeRouter);//middleware to run homeRouter on request to homepage.
-//app.use('/dashboard',userRouter);//middleware to run userRouter on request to /dashboard.no 
+app.use('/',routers);//middleware to run homeRouter on request to homepage.
 
 //open port for listening
   app.listen(PORT, () => 

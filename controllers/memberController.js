@@ -21,10 +21,10 @@ exports.member_login = async function (req, res) {
         //use class method checkPassword() against the member object 
         //has users input password 
         const checkPass = member.checkPassword(req.body.password);
-        console.log(checkPass)
+        
         if (checkPass) {
           setSession(req.session);
-          res.render('members');
+          res.render('members',{loggedIn:true});
         }
         else {
           res.redirect('/');
@@ -45,7 +45,7 @@ exports.member_signup = async function (req, res) {
     }).then((arr) => {
       const wasCreated = arr[1] // the second element tells us if the instance was newly created
       if (wasCreated) {
-        res.render('home');
+        res.render('home',{loggedIn:false});
       }
       else {
         res.redirect("/")
@@ -56,6 +56,18 @@ exports.member_signup = async function (req, res) {
       res.end();
     });
 } 
+
+
+exports.member_logout = function logOut(req,res)
+{
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.redirect('/');
+    });
+  } else {
+    res.status(404).end();
+  }
+}
 
 function setSession(reqSession) {
   reqSession.loggedIn = true;

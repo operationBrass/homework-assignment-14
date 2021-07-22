@@ -11,6 +11,49 @@
     <link rel="stylesheet" href="/css/style.css" />
   </head>
 <body> 
+   <section class="hero is-medium">
+      <!-- Hero head: will stick at the top -->
+      <div class="hero-head">
+        <nav class="navbar">
+          <div class="container">
+            <div class="navbar-brand">
+         <P>The Tech Blog</P>
+              <span class="navbar-burger" data-target="navbarMenuHeroA">
+                <span></span>
+                <span></span>
+                <span></span>
+              </span>
+            </div>
+            <div id="navbarMenuHeroA" class="navbar-menu">
+              <div class="navbar-end">
+                <a class="navbar-item is-active">
+                  Home
+                </a>
+                <a class="navbar-item">
+                  Dashboard
+                </a>
+                {{#if loggedIn}}
+                <a href="/members/logout" class="navbar-item">
+                  Logout
+                </a>
+                {{else}}
+                <a href="/" class="navbar-item">
+                  Login
+                </a>
+                {{/if}}
+                <span class="navbar-item">
+                  <a class="button is-primary is-inverted">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Download</span>
+                  </a>
+                </span>   
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
   {{{body}}}
 </body>
 </html>

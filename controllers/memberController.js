@@ -2,6 +2,9 @@ const { Member } = require("../models/index");
 
 exports.member_login = async function (req, res) {
   //find member by username
+
+  console.log(req.body)
+
   await Member.findOne(
     {
       where:
@@ -12,42 +15,40 @@ exports.member_login = async function (req, res) {
     }).then((member) => {
 
       if (member === null) {
-        res.status(500);
+        res.redirect('/');
       }
       else {
         //use class method checkPassword() against the member object 
         //has users input password 
         const checkPass = member.checkPassword(req.body.password);
+        console.log(checkPass)
         if (checkPass) {
-          setSession(req.session, req.body.email);
-          res.send();
+          setSession(req.session);
+          res.render('members');
         }
         else {
-          res.status(500);
-          res.send();
+          res.redirect('/');
         }
       }
     }).catch((err) => console.log(err.message));
 }
 
-exports.user_signup = async function (req, res) {
-  await User.findOrCreate(
+exports.member_signup = async function (req, res) {
+  await Member.findOrCreate(
     {
       where:
       {
-        username: req.body.username,
         email: req.body.email,
-        password: req.body.password,
+        password: req.body.password
       }
+
     }).then((arr) => {
       const wasCreated = arr[1] // the second element tells us if the instance was newly created
       if (wasCreated) {
-        setSession(req.session, req.body.email);
-        res.send("Signup Success").end();
+        res.render('home');
       }
       else {
-        res.status(500);
-        res.end();
+        res.redirect("/")
       }
     }).catch((err) => {
       console.log('There was an error', err.message)
@@ -55,3 +56,8 @@ exports.user_signup = async function (req, res) {
       res.end();
     });
 } 
+
+function setSession(reqSession) {
+  reqSession.loggedIn = true;
+  return;
+}

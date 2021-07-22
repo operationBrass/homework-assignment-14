@@ -24,13 +24,13 @@ app.use(session({secret: "techBlogs ftw", resave:false, saveUninitialized:false}
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
-app.use(express.static(path.join(__dirname, 'public'))); // retrieve css and js files automatically
+app.use(express.static(path.join(__dirname, 'resources'))); // retrieve css and js files automatically
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use('/',routers);//middleware to run homeRouter on request to homepage.
+app.use(routers);//middleware to run routes
 
 //open port for listening
   app.listen(PORT, () => 

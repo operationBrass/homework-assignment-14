@@ -21,14 +21,11 @@ Member.init(
       allowNull:false,
       autoIncrement:true,
     },
-        email: 
+        username: 
         {
           type: DataTypes.STRING,
           allowNull: false,
           unique: true,
-          validate: {
-            isEmail: true,
-          },
         },
         password: 
         {

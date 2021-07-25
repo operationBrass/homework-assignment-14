@@ -1,15 +1,28 @@
 const { Member } = require("../models/index");
 
+const testPost = 
+[
+  {
+  heading:"Java",
+  content:"just do it when you want to do it"
+  },
+  {
+    heading:"React",
+    content:"just do it when you want to do it"
+  },
+  {
+    heading:"HMTL",
+    content:"just do it when you want to do it"
+  },
+]
+
 exports.member_login = async function (req, res) {
   //find member by username
-
-  console.log(req.body)
-
   await Member.findOne(
     {
       where:
       {
-        email: req.body.email,
+        username: req.body.username,
       }
 
     }).then((member) => {
@@ -24,7 +37,7 @@ exports.member_login = async function (req, res) {
         
         if (checkPass) {
           setSession(req.session);
-          res.render('members',{loggedIn:true});
+          res.render('members',{loggedIn:true,testPost});
         }
         else {
           res.redirect('/');
@@ -34,11 +47,12 @@ exports.member_login = async function (req, res) {
 }
 
 exports.member_signup = async function (req, res) {
+  
   await Member.findOrCreate(
     {
       where:
       {
-        email: req.body.email,
+        username: req.body.username,
         password: req.body.password
       }
 
@@ -62,7 +76,7 @@ exports.member_logout = function logOut(req,res)
 {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
-      res.redirect('/');
+      res.render('/',{loggedIn:false});
     });
   } else {
     res.status(404).end();

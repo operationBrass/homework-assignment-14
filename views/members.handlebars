@@ -1,34 +1,19 @@
 
       <!-- Hero content: will be in the middle -->
       <div class="hero-body">
-        <div class="container has-text-centered">
-          <div class="tile">
-            <div class="tile is-ancestor">
-              <!-- All other tile elements -->
-              <div class="tile is-vertical is-parent">
-                <!-- Add content or other tiles -->
-                <div class ="tile is-child-box">
-                <p class="title">
-                  Title
-                </p>
-                <p class="subtitle">
-                  Subtitle
-                </p>
-                </div>
-                <div class="tile is-child-box">
-                  <!-- Add content or other tiles -->
-                  <p class="title">
-                    Title
-                  </p>
-                  <p class="subtitle">
-                    Subtitle
-                  </p>
-                </div>
-              </div>
-        </div>
-      </div>
-    </div>
-    </div>
+   
+  {{#each testPost}}
+  <article class="message block is-link">
+  <div class="message-header">
+    <p>{{this.heading}}</p>
+    <button class="delete" aria-label="delete"></button>
+  </div>
+  <div class="message-body">
+    {{this.content}}
+  </div>
+</article>
+{{/each}}
+
       <!-- Hero footer: will stick at the bottom -->
       <div class="hero-foot">
       </div>

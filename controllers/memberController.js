@@ -39,7 +39,7 @@ exports.member_login = async function (req, res) {
         
         if (checkPass) {
           setSession(req.session);
-          res.render('members',{loggedIn:true,testPost,isDashboard:false});
+          res.redirect("/members/home")
         }
         else {
           res.redirect('/');
@@ -48,8 +48,27 @@ exports.member_login = async function (req, res) {
     }).catch((err) => console.log(err.message));
 }
 
+exports.member_home = async function (req, res) 
+{
+  if(req.session.loggedIn)
+  {
+  res.render('members',{loggedIn:true,testPost,isDashboard:false});
+  }
+  else
+  {
+    res.redirect("/");
+  }
+}
+
 exports.member_dashboard = async function (req, res) {
+  if(req.session.loggedIn)
+  {
   res.render('members',{loggedIn:true,testPost,isDashboard:true});
+  }
+  else
+  {
+    res.redirect("/");
+  }
 }
 
 exports.member_signup = async function (req, res) {
@@ -82,7 +101,7 @@ exports.member_logout = function logOut(req,res)
 {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
-      res.render('/',{loggedIn:false});
+      res.redirect("/");
     });
   } else {
     res.status(404).end();
@@ -93,4 +112,6 @@ function setSession(reqSession) {
   reqSession.loggedIn = true;
   return;
 }
+
+
 

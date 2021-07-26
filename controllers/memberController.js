@@ -4,15 +4,17 @@ const testPost =
 [
   {
   heading:"Java",
-  content:"just do it when you want to do it"
+  content:"More than just coffee",
+
   },
   {
     heading:"React",
-    content:"just do it when you want to do it"
+    content:"Not sure how to react to that",
+
   },
   {
     heading:"HMTL",
-    content:"just do it when you want to do it"
+    content:"Its actually HTML :p",
   },
 ]
 
@@ -37,13 +39,17 @@ exports.member_login = async function (req, res) {
         
         if (checkPass) {
           setSession(req.session);
-          res.render('members',{loggedIn:true,testPost});
+          res.render('members',{loggedIn:true,testPost,isDashboard:false});
         }
         else {
           res.redirect('/');
         }
       }
     }).catch((err) => console.log(err.message));
+}
+
+exports.member_dashboard = async function (req, res) {
+  res.render('members',{loggedIn:true,testPost,isDashboard:true});
 }
 
 exports.member_signup = async function (req, res) {
@@ -87,3 +93,4 @@ function setSession(reqSession) {
   reqSession.loggedIn = true;
   return;
 }
+

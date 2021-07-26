@@ -1,23 +1,30 @@
 
       <!-- Hero content: will be in the middle -->
-      <div class="hero-body">
-   
+<div class="hero-body">
+{{#if isDashboard}}
   {{#each testPost}}
-  <article class="message block is-link">
-  <div class="message-header">
-    <p>{{this.heading}}</p>
-    <button class="delete" aria-label="delete"></button>
-  </div>
-  <div class="message-body">
-    {{this.content}}
-  </div>
-</article>
-{{/each}}
-
-      <!-- Hero footer: will stick at the bottom -->
-      <div class="hero-foot">
+    <article class="message block is-link">
+      <div class="message-header">
+        <p>{{this.heading}}</p>
+        <span class="icon is-one-fith"> 
+        <i class="far fa-edit"></i> 
+        <i class="far fa-trash-alt"></i>
+        </span>
       </div>
-    </section>
-
-
-  </div>
+      <div class="message-body">
+        {{this.content}}
+      </div>
+    </article>
+  {{/each}} 
+{{else}}
+  {{#each testPost}}
+    <article class="message block is-link">
+      <div class="message-header">
+        <p>{{this.heading}}</p>
+      </div>
+      <div class="message-body">
+        {{this.content}}
+      </div>
+    </article>
+  {{/each}} 
+{{/if}}

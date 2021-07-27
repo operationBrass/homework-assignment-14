@@ -14,5 +14,6 @@ Comment.belongsTo(Member,{constraints:false});
 
 module.exports = {
   Member,
-  Post
+  Post,
+  Comment
 };

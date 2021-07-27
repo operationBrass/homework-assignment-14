@@ -1,22 +1,5 @@
-const { Member } = require("../models/index");
 
-const testPost = 
-[
-  {
-  heading:"Java",
-  content:"More than just coffee",
-
-  },
-  {
-    heading:"React",
-    content:"Not sure how to react to that",
-
-  },
-  {
-    heading:"HMTL",
-    content:"Its actually HTML :p",
-  },
-]
+const { Member,Post } = require("../models/index");
 
 exports.member_login = async function (req, res) {
   //find member by username
@@ -36,9 +19,9 @@ exports.member_login = async function (req, res) {
         //use class method checkPassword() against the member object 
         //has users input password 
         const checkPass = member.checkPassword(req.body.password);
-        
+        console.log(member.id)
         if (checkPass) {
-          setSession(req.session);
+          setSession(req.session,member.id);
           res.redirect("/members/home")
         }
         else {
@@ -50,9 +33,19 @@ exports.member_login = async function (req, res) {
 
 exports.member_home = async function (req, res) 
 {
+
+  const getPosts = await Post.findAll({include:[{model:Member}]});
+  
+  const posts = getPosts.map((post) =>
+  post.get({ plain: true })
+);
+
+console.log(posts)
+
+  
   if(req.session.loggedIn)
   {
-  res.render('members',{loggedIn:true,testPost,isDashboard:false});
+  res.render('members',{loggedIn:true,posts,isDashboard:false});
   }
   else
   {
@@ -108,10 +101,9 @@ exports.member_logout = function logOut(req,res)
   }
 }
 
-function setSession(reqSession) {
+function setSession(reqSession,userId) {
   reqSession.loggedIn = true;
+  reqSession.userId = userId;
   return;
 }
-
-
 

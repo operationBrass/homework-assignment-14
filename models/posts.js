@@ -16,6 +16,10 @@ Post.init(
       allowNull:false,
       autoIncrement:true,
     },
+    heading: {
+      type: DataTypes.STRING(100),
+      allowNull:false,
+    },
       content: {
           type: DataTypes.STRING(500),
           allowNull:false,
@@ -32,7 +36,6 @@ Post.init(
 
   {
     sequelize,
-    timestamps: false,
     freezeTableName: true,
     underscored: true
   }

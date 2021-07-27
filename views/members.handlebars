@@ -1,12 +1,15 @@
 
       <!-- Hero content: will be in the middle -->
-<div class="hero-body">
+<div class="hero-body is-half">
 {{#if isDashboard}}
-  {{#each testPost}}
+  {{#each posts}}
     <article class="message block is-link">
       <div class="message-header">
         <p>{{this.heading}}</p>
-        <span class="icon is-one-fith"> 
+         <span class="icon is-right"> 
+        <p>{{this.Member.username}} {{this.createdAt}}</p>
+        </span>
+        <span class="icon is-right"> 
         <i class="far fa-edit"></i> 
         <i class="far fa-trash-alt"></i>
         </span>
@@ -17,10 +20,11 @@
     </article>
   {{/each}} 
 {{else}}
-  {{#each testPost}}
+  {{#each posts}}
     <article class="message block is-link">
       <div class="message-header">
         <p>{{this.heading}}</p>
+        <p class="is-right">{{this.Member.username}} {{this.createdAt}}</p>
       </div>
       <div class="message-body">
         {{this.content}}
@@ -28,3 +32,4 @@
     </article>
   {{/each}} 
 {{/if}}
+</div>

@@ -4,13 +4,19 @@ const path = require('path');
 const exphbs = require('express-handlebars');
 const hbs = exphbs.create({});
 const session = require('express-session');
-const {Post, Member} = require("./models/index")
+const {Post, Member} = require("./models/index");
+const userSeed = require('./seed/seedUsers');
+const commentSeeds= require('./seed/seedComments');
+const postSeeds = require('./seed/seedPosts');
 
 //import local modules
 const sequelize = require('./config/connection');
 
 //routers
 const routers = require('./routes');
+const seedMembers = require('./seed/seedUsers');
+const { member_dashboard } = require('./controllers/memberController');
+const { cpuUsage } = require('process');
 
 
 // assign express object
@@ -36,16 +42,16 @@ app.use(routers);//middleware to run routes
   app.listen(PORT, () => 
   {
     
-    sequelize.authenticate()//auth to db
-    .then(() =>
+    sequelize.sync({force:true})
+    .then(async () =>
     {
-      sequelize.sync({ force: true });
+      await userSeed();
+      await postSeeds();
+      await commentSeeds();
       console.log("Database connected")
     })
     .catch((err) => {console.log("error", err)});
   })
- 
-
 
 
 

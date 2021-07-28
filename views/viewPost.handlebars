@@ -1,10 +1,27 @@
-{{#each comments}}
+
+      <!-- Hero content: will be in the middle -->
+<div class="hero-body is-half">
+
       <article class="message block is-link">
-       <div class="message-header"></div>
-          <p class="is-right">{{this.username}} {{this.createdAt}}</p>
+       <div class="message-header">
+          <p>{{postToView.heading}}</p>
+          <p class="is-right">{{postToView.Member.username}} {{postToView.createdAt}}</p>
+        </div>
+        <div class="message-body">
+          {{postToView.content}}
+        </div>
+      </article>
+
+    {{#each postToView.Comments}}
+        <article class="message block is-warning">
+       <div class="message-header">
+          <p>{{this.content}}</p>
         </div>
         <div class="message-body">
           {{this.content}}
         </div>
       </article>
-{{/each}}
+    {{/each}}
+
+
+</div>

@@ -65,8 +65,6 @@ exports.member_home = async function (req, res)
   post.get({ plain: true })
 );
 
-console.log(posts);
-
   if(req.session.loggedIn)
   {
   res.render('members',{loggedIn:true,posts,isDashboard:false});
@@ -78,7 +76,6 @@ console.log(posts);
 }
 
 
-
 exports.member_dashboard = async function (req, res) {
 //show users all their posts
   
@@ -87,8 +84,8 @@ exports.member_dashboard = async function (req, res) {
 
 exports.member_view_post = async function (req,res)
 {
-  const getPosts = await Post.findAll
-  ({
+  const getPost = await Post.findByPk(1,
+  {
     include:
     [
       {
@@ -113,6 +110,19 @@ exports.member_view_post = async function (req,res)
       }
     ]
   })
+
+  const postToView = getPost.get({ plain: true })
+  console.log(postToView)
+
+  if(req.session.loggedIn)
+  {
+  res.render('viewPost',{loggedIn:true,postToView});
+  }
+  else
+  {
+    res.redirect("/");
+  }
+
 }
 
 exports.member_signup = async function (req, res) {

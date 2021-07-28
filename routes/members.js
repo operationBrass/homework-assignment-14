@@ -8,5 +8,6 @@ router.get('/home',members.member_home);
 router.get('/logout',members.member_logout);
 router.post('/login', members.member_login); 
 router.post('/signup', members.member_signup);
+router.get('/test',members.member_view_post);
 
 module.exports  = router;

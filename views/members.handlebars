@@ -2,6 +2,7 @@
       <!-- Hero content: will be in the middle -->
 <div class="hero-body is-half">
 {{#if isDashboard}}
+
   {{#each posts}}
     <article class="message block is-link">
       <div class="message-header">
@@ -18,18 +19,21 @@
         {{this.content}}
       </div>
     </article>
+  {{/each}}
+
+  {{else}}
+    {{#each posts}}
+      <article class="message block is-link">
+       <div class="message-header">
+          <p>{{this.heading}}</p>
+          <p class="is-right">{{this.Member.username}} {{this.createdAt}}</p>
+        </div>
+        <div class="message-body">
+          {{this.content}}
+        </div>
+      </article>
   {{/each}} 
-{{else}}
-  {{#each posts}}
-    <article class="message block is-link">
-      <div class="message-header">
-        <p>{{this.heading}}</p>
-        <p class="is-right">{{this.Member.username}} {{this.createdAt}}</p>
-      </div>
-      <div class="message-body">
-        {{this.content}}
-      </div>
-    </article>
-  {{/each}} 
+
 {{/if}}
+
 </div>

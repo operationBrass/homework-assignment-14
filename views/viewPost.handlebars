@@ -1,0 +1,10 @@
+{{#each comments}}
+      <article class="message block is-link">
+       <div class="message-header"></div>
+          <p class="is-right">{{this.username}} {{this.createdAt}}</p>
+        </div>
+        <div class="message-body">
+          {{this.content}}
+        </div>
+      </article>
+{{/each}}

@@ -25,15 +25,14 @@ Post.init(
           allowNull:false,
         },
       member_id: {
-        type: DataTypes.INTEGER,
-        allowNull:false,
-        references: {
-          model: 'Member',
-          otherKey: 'id',
+          type: DataTypes.INTEGER,
+          references: {
+            model: 'Member',
+            key: 'id',
+          },
         },
-      }
     },
-
+    
   {
     sequelize,
     freezeTableName: true,

@@ -1,5 +1,5 @@
 
-const { Member,Post } = require("../models/index");
+const { Member,Post,Comment } = require("../models/index");
 
 exports.member_login = async function (req, res) {
   //find member by username
@@ -34,15 +34,39 @@ exports.member_login = async function (req, res) {
 exports.member_home = async function (req, res) 
 {
 
-  const getPosts = await Post.findAll({include:[{model:Member}]});
-  
+  const getPosts = await Post.findAll
+  ({
+    include:
+    [
+      {
+        model:Member,
+        attributes:["username"]
+      },
+      {
+        model: Comment,
+        attributes: 
+        [
+            'id',
+            'content',
+            'post_id',
+            'member_id',
+            'created_at'
+        ],
+        include: 
+        {
+            model: Member,
+            attributes: ['username'],
+        },
+      }
+    ]
+  })
+
   const posts = getPosts.map((post) =>
   post.get({ plain: true })
 );
 
-console.log(posts)
+console.log(posts);
 
-  
   if(req.session.loggedIn)
   {
   res.render('members',{loggedIn:true,posts,isDashboard:false});
@@ -53,15 +77,42 @@ console.log(posts)
   }
 }
 
+
+
 exports.member_dashboard = async function (req, res) {
-  if(req.session.loggedIn)
-  {
-  res.render('members',{loggedIn:true,testPost,isDashboard:true});
-  }
-  else
-  {
-    res.redirect("/");
-  }
+//show users all their posts
+  
+
+}
+
+exports.member_view_post = async function (req,res)
+{
+  const getPosts = await Post.findAll
+  ({
+    include:
+    [
+      {
+        model:Member,
+        attributes:["username"]
+      },
+      {
+        model: Comment,
+        attributes: 
+        [
+            'id',
+            'content',
+            'post_id',
+            'member_id',
+            'created_at'
+        ],
+        include: 
+        {
+            model: Member,
+            attributes: ['username'],
+        },
+      }
+    ]
+  })
 }
 
 exports.member_signup = async function (req, res) {

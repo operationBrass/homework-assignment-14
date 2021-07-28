@@ -14,11 +14,8 @@
 
     {{#each postToView.Comments}}
         <article class="message block is-warning">
-       <div class="message-header">
-          <p>{{this.content}}</p>
-        </div>
         <div class="message-body">
-          {{this.content}}
+          {{this.content}} ---- {{this.Member.username}} on {{this.created_at}}
         </div>
       </article>
     {{/each}}

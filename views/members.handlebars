@@ -6,7 +6,7 @@
   {{#each posts}}
     <article class="message block is-link">
       <div class="message-header">
-        <p>{{this.heading}}</p>
+        <p><a href=/members/post/id:{{this.id}}> {{this.heading}}</a></p>
          <span class="icon is-right"> 
         <p>{{this.Member.username}} {{this.createdAt}}</p>
         </span>
@@ -25,7 +25,7 @@
     {{#each posts}}
       <article class="message block is-link">
        <div class="message-header">
-          <p>{{this.heading}}</p>
+          <p><a href=/members/post/{{this.id}}> {{this.heading}}</a></p>
           <p class="is-right">{{this.Member.username}} {{this.createdAt}}</p>
         </div>
         <div class="message-body">

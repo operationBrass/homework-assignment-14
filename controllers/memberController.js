@@ -84,7 +84,8 @@ exports.member_dashboard = async function (req, res) {
 
 exports.member_view_post = async function (req,res)
 {
-  const getPost = await Post.findByPk(1,
+  console.log(req.params)
+  const getPost = await Post.findByPk(req.params.id,
   {
     include:
     [

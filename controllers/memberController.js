@@ -22,6 +22,7 @@ exports.member_login = async function (req, res) {
         console.log(member.id)
         if (checkPass) {
           setSession(req.session,member.id);
+      
           res.redirect("/members/home")
         }
         else {
@@ -75,16 +76,64 @@ exports.member_home = async function (req, res)
   }
 }
 
-
 exports.member_dashboard = async function (req, res) {
 //show users all their posts
-  
+
+const getPosts = await Post.findAll(
+  {
+    where: 
+    [
+      {
+        member_id: req.session.userId
+      }
+    ],
+    include:
+    [
+      {
+        model:Member,
+        attributes:["username"]
+      },
+      {
+        model: Comment,
+        attributes: 
+        [
+            'id',
+            'content',
+            'post_id',
+            'member_id',
+            'created_at'
+        ],
+        include: 
+        {
+            model: Member,
+            attributes: ['username'],
+        },
+      }
+    ]
+  });
+
+  const posts = getPosts.map((post) =>
+  post.get({ plain: true })
+);
+
+console.log(posts)
+
+  if(req.session.loggedIn)
+  {
+  res.render('members',{loggedIn:true,posts,isDashboard:true});
+  }
+  else
+  {
+    res.redirect("/");
+  }
+
 
 }
 
+
+
 exports.member_view_post = async function (req,res)
 {
-  console.log(req.params)
   const getPost = await Post.findByPk(req.params.id,
   {
     include:
@@ -113,7 +162,6 @@ exports.member_view_post = async function (req,res)
   })
 
   const postToView = getPost.get({ plain: true })
-  console.log(postToView)
 
   if(req.session.loggedIn)
   {

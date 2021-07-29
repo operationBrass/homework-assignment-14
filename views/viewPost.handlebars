@@ -5,17 +5,17 @@
       <article class="message block is-link">
        <div class="message-header">
           <p>{{postToView.heading}}</p>
-          <p class="is-right">{{postToView.Member.username}} {{postToView.createdAt}}</p>
+          <p class="is-right">{{postToView.Member.username}} {{format_time postToView.createdAt}} {{format_date postToView.createdAt}}</p>
         </div>
         <div class="message-body">
           {{postToView.content}}
         </div>
       </article>
 
-    {{#each postToView.Comments}}
+    {{#each postToView.Comments}}  <!--traverse the comments attached to the post-->
         <article class="message block is-warning">
         <div class="message-body">
-          {{this.content}} ---- {{this.Member.username}} on {{this.created_at}}
+          {{this.content}} ---- {{this.Member.username}} on {{format_time postToView.createdAt}} {{format_date postToView.createdAt}}
         </div>
       </article>
     {{/each}}

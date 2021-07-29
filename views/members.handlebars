@@ -8,7 +8,7 @@
       <div class="message-header">
         <p><a href=/members/post/id:{{this.id}}> {{this.heading}}</a></p>
          <span class="icon is-right"> 
-        <p>{{this.Member.username}} {{this.createdAt}}</p>
+        <p>{{this.Member.username}} {{format_time this.createdAt}} {{format_date this.createdAt}}</p>
         </span>
         <span class="icon is-right"> 
         <i class="far fa-edit"></i> 
@@ -26,7 +26,7 @@
       <article class="message block is-link">
        <div class="message-header">
           <p><a href=/members/post/{{this.id}}> {{this.heading}}</a></p>
-          <p class="is-right">{{this.Member.username}} {{this.createdAt}}</p>
+          <p class="is-right is-small">{{this.Member.username}}  {{format_time this.createdAt}} {{format_date this.createdAt}}</p>
         </div>
         <div class="message-body">
           {{this.content}}

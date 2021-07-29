@@ -8,7 +8,26 @@ const testMember =
     password: "rachael100",
   }
 
+  const testMember2 = 
+  {
+    username:"another2@test.com",
+    password: "rachael100",
+  }
 
-const seedMembers = () => Member.create(testMember);
+  const testMember3 = 
+  {
+    username:"another3@test.com",
+    password: "rachael100",
+  }
+
+
+
+  
+const seedMembers = async () => {
+  await Member.create(testMember);
+  await Member.create(testMember2);
+  await Member.create(testMember3);
+}
+
 
 module.exports = seedMembers;

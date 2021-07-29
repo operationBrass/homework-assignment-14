@@ -4,6 +4,7 @@ const members = require("../controllers/memberController");
 
 router.get('/',() => {console.log("you rang")});
 router.get('/dashboard',members.member_dashboard);
+router.get('/new-post',members.member_new_post);
 router.get('/home',members.member_home);
 router.get('/logout',members.member_logout);
 router.post('/login', members.member_login); 

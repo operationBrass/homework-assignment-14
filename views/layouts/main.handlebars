@@ -30,9 +30,22 @@
                 <a href="/members/home" class="navbar-item is-active">
                   Home
                 </a>
-                <a href="/members/dashboard" class="navbar-item">
-                  Dashboard
+                </div>
+                <div class="navbar-item has-dropdown is-hoverable">
+                <a  class="navbar-link">
+                    Dashboard
                 </a>
+                
+              <div class="navbar-dropdown">
+              <a href="/members/dashboard" class="navbar-item">
+                My Posts
+              </a>
+              <a href="/members/new-post" class="navbar-item">
+                New Post
+              </a>
+              </div>
+
+              <div class="navbar-end"></div>
                 {{#if loggedIn}}
                 <a href="/members/logout" class="navbar-item">
                   Logout

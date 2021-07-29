@@ -116,8 +116,6 @@ const getPosts = await Post.findAll(
   post.get({ plain: true })
 );
 
-console.log(posts)
-
   if(req.session.loggedIn)
   {
   res.render('members',{loggedIn:true,posts,isDashboard:true});
@@ -130,7 +128,17 @@ console.log(posts)
 
 }
 
-
+exports.member_new_post = async function (req,res)
+{
+  if(req.session.loggedIn)
+  {
+  res.render('newPost',{loggedIn:true});
+  }
+  else
+  {
+    res.redirect("/");
+  }
+}
 
 exports.member_view_post = async function (req,res)
 {

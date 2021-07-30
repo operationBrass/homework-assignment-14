@@ -7,14 +7,14 @@ const testPost =
   {
   heading:"Java",
   content:"More than just coffee",
-  memberid:1,
+  memberid:2,
   comment_id:1
   },
   {
     heading:"React",
     content:"Not sure how to react to that",
     member_id:2,
-    comment_id:3
+    comment_id:4
   },
   {
     heading:"React",

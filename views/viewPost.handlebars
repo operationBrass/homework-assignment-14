@@ -1,11 +1,14 @@
 
       <!-- Hero content: will be in the middle -->
+
+      <!-- seems to be a good candidate for partial but dont really understand them enough yet to worry about :) -->
+
 <div class="hero-body is-half">
 
       <article class="message block is-link">
        <div class="message-header">
           <p>{{postToView.heading}}</p>
-          <p class="is-right">{{postToView.Member.username}} {{format_time postToView.createdAt}} {{format_date postToView.createdAt}}</p>
+          <p class="is-right is-small">{{postToView.Member.username}} {{format_time postToView.createdAt}} {{format_date postToView.createdAt}}</p>
         </div>
         <div class="message-body">
           {{postToView.content}}
@@ -15,10 +18,23 @@
     {{#each postToView.Comments}}  <!--traverse the comments attached to the post-->
         <article class="message block is-warning">
         <div class="message-body">
-          {{this.content}} ---- {{this.Member.username}} on {{format_time postToView.createdAt}} {{format_date postToView.createdAt}}
-        </div>
+          {{this.content}} ---- {{this.Member.username}} on {{format_time this.created_at}} {{format_date this.created_at}}
+        </div>  
       </article>
-    {{/each}}
+          {{/each}}
+          
+      <br>
 
+      <!-- add new comment --> 
+      <a id={{postToView.Id}} class="message block is-info"> Reply to  {{postToView.Member.username}} </a> 
+<!-- partial territory -->
+
+<div class="field is-hidden">
+  <label class="label">Reply</label>
+  <div class="control">
+    <textarea class="textarea is-primary" placeholder="Textarea"></textarea>
+    <br><br>
+    <input class="button" type="submit" value="Submit Reply">
+  </div>
 
 </div>

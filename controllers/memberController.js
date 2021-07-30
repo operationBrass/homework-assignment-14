@@ -1,5 +1,6 @@
 
 const { Member,Post,Comment } = require("../models/index");
+const { post } = require("../routes/members");
 
 exports.member_login = async function (req, res) {
   //find member by username
@@ -65,7 +66,6 @@ exports.member_home = async function (req, res)
   const posts = getPosts.map((post) =>
   post.get({ plain: true })
 );
-
   if(req.session.loggedIn)
   {
   res.render('members',{loggedIn:true,posts,isDashboard:false});
@@ -118,14 +118,20 @@ const getPosts = await Post.findAll(
 
   if(req.session.loggedIn)
   {
-  res.render('members',{loggedIn:true,posts,isDashboard:true});
+    console.log(posts)
+    if(posts.length > 0)
+    {
+  res.render('dashboard',{loggedIn:true,posts,noRecords:false});
+    }
+    else
+    {
+      res.render('dashboard',{loggedIn:false,noRecords:true});
+    }
   }
   else
   {
     res.redirect("/");
   }
-
-
 }
 
 exports.member_new_post = async function (req,res)
@@ -142,6 +148,13 @@ exports.member_new_post = async function (req,res)
 
 exports.member_view_post = async function (req,res)
 {
+
+  if(!req.session.loggedIn)
+  {
+    res.redirect("/");
+  }
+
+
   const getPost = await Post.findByPk(req.params.id,
   {
     include:
@@ -171,15 +184,14 @@ exports.member_view_post = async function (req,res)
 
   const postToView = getPost.get({ plain: true })
 
-  if(req.session.loggedIn)
+if(postToView !== null)
   {
-  res.render('viewPost',{loggedIn:true,postToView});
+    res.render('viewPost',{loggedIn:true,postToView, noRecords:false});
   }
   else
   {
-    res.redirect("/");
+    res.render('viewPost',{loggedIn:true,noRecords:true});
   }
-
 }
 
 exports.member_signup = async function (req, res) {

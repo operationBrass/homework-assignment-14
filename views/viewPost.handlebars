@@ -5,6 +5,7 @@
 
 <div class="hero-body is-half">
 
+
       <article class="message block is-link">
        <div class="message-header">
           <p>{{postToView.heading}}</p>
@@ -24,17 +25,19 @@
           {{/each}}
           
       <br>
+        <div id="replyDiv" class="field is-hidden">
+    <label class="label">Message</label>
+    <div class="control">
+    <textarea id="replyTA" class="textarea is-primary " placeholder="Textarea"></textarea>
+    </div>
+    <br>
+    <input class="button" type="submit" value="Submit input">
+    </div>
+    </article>
 
       <!-- add new comment --> 
-      <a id={{postToView.Id}} class="message block is-info"> Reply to  {{postToView.Member.username}} </a> 
-<!-- partial territory -->
-
-<div class="field is-hidden">
-  <label class="label">Reply</label>
-  <div class="control">
-    <textarea class="textarea is-primary" placeholder="Textarea"></textarea>
-    <br><br>
-    <input class="button" type="submit" value="Submit Reply">
-  </div>
+      <a id="replyVisible" class="message block is-info"> Show/Hide reply to {{postToView.Member.username}} </a>
 
 </div>
+
+<script src="/js/newComment.js"></script>

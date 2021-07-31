@@ -34,7 +34,7 @@ app.set('view engine', 'handlebars');
 //setup sessions management middleware
 app.use(session({secret: "techBlogs ftw", resave:false, saveUninitialized:false})); //default false values for a session.
 
-app.use(express.static(path.join(__dirname, 'resources'))); // retrieve css and js files automatically
+app.use(express.static(path.join(__dirname, 'public'))); // retrieve css and js files automatically
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));

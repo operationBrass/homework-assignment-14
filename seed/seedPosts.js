@@ -7,7 +7,7 @@ const testPost =
   {
   heading:"Java",
   content:"More than just coffee",
-  memberid:2,
+  member_id:2,
   comment_id:1
   },
   {

@@ -7,28 +7,46 @@
  </article>
 {{else}}
   {{#each posts}}
+
     <article class="message block is-link">
+
       <div class="message-header">
         <p>{{this.heading}}</p>
          <span class="icon is-right"> 
         <p>{{this.Member.username}} {{format_time this.createdAt}} {{format_date this.createdAt}}</p>
         </span>
         <span class="icon is-right"> 
-        <i class="far fa-edit"></i> 
-        <i class="far fa-trash-alt"></i>
+        <i id={{this.id}}-edit class="far fa-edit"></i> 
+        <i id={{this.id}}-delete class="far fa-trash-alt"></i>
         </span>
       </div>
+
       <div class="message-body">
         {{this.content}}
       </div>
 
-    <div class="field">
+    </article>
+
+  <div id=div-{{this.id}} class="field is-hidden">
+
+    <label class="label">Title</label>
+
+    <div class="control">
+      <input class="input" type="text" placeholder="Text input">
+    </div>
+
     <label class="label">Message</label>
     <div class="control">
-    <textarea class="textarea is-primary is-hidden" placeholder="Textarea"></textarea>
+      <textarea class="textarea is-primary " placeholder="Textarea"></textarea>
     </div>
-    <input class="button" type="submit" value="Submit input">
-    </div>
-    </article>
+
+    <br/>
+
+    <input id={{this.id}}-btn class="button" type="submit" value="Update Post">
+
+  </div>
+
   {{/each}}
 {{/if}}
+
+<script src="/js/memberDashboard.js"></script>

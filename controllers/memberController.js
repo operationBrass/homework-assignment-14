@@ -35,7 +35,6 @@ exports.member_login = async function (req, res) {
 
 exports.member_home = async function (req, res) 
 {
-
   const getPosts = await Post.findAll
   ({
     include:
@@ -118,7 +117,6 @@ const getPosts = await Post.findAll(
 
   if(req.session.loggedIn)
   {
-    console.log(posts)
     if(posts.length > 0)
     {
   res.render('dashboard',{loggedIn:true,posts,noRecords:false});
@@ -186,6 +184,39 @@ exports.member_deletePost = async function (req,res)
     res.redirect("/");
   }
 }
+
+exports.member_guest = async function (req,res)
+{
+
+  await Member.findOne(
+    {
+      where:
+      {
+        username: "guest@test.com",
+      }
+
+    }).then((member) => {
+
+      if (member === null) {
+        res.redirect('/');
+      }
+      else {
+        //use class method checkPassword() against the member object 
+        //has users input password 
+        const checkPass = member.checkPassword("testing100");
+        console.log(member.id)
+        if (checkPass) {
+          setSession(req.session,member.id);
+      
+          res.redirect("/members/home")
+        }
+        else {
+          res.redirect('/');
+        }
+      }
+    }).catch((err) => console.log(err.message));
+}
+
 
 
 exports.member_createPost = async function (req,res)

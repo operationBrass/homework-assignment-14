@@ -9,6 +9,7 @@ router.get('/logout',members.member_logout);
 router.get('/post/:id',members.member_viewPost);
 router.get('/createPost',members.member_createPost);
 router.get('/delete/:id', members.member_deletePost);  
+router.get('/guest', members.member_guest);  
 
 router.post('/newComment/:id', members.member_newComment);  
 router.post('/login', members.member_login);

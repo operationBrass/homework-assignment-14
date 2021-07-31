@@ -2,8 +2,11 @@
 {{#if noRecords}}
  <article class="message block is-warning">
       <div class="message-header">
-        <p>You have no posts! Use the create a post menu option Dashboard -> New Post</p>
+        <p>You have no posts! Dashboard -> New Post</p>
+        <br/>
+        <br/>
         </div>
+          <a href="/members/home" id="replyVisible" class="message block is-info"> Back Home </a>
  </article>
 {{else}}
   {{#each posts}}

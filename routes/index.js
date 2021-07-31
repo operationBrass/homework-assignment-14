@@ -16,6 +16,9 @@ else
 
 router.get('/register',(req,res) => {res.render('register')});
 
+
+
+
 router.use('/members',memberRoute);
 
 router.use((req, res) => {

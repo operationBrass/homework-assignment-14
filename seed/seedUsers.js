@@ -4,20 +4,20 @@ const { Member } = require('../models');
 
 const testMember = 
   {
-    username:"another@test.com",
-    password: "rachael100",
+    username:"guest@iguess.com",
+    password: "testing100",
   }
 
   const testMember2 = 
   {
-    username:"another2@test.com",
-    password: "rachael100",
+    username:"chuckles_mcChuck@mrserious.com",
+    password: "testing100",
   }
 
   const testMember3 = 
   {
-    username:"another3@test.com",
-    password: "rachael100",
+    username:"giddy_bout_github@opensource.com",
+    password: "testing100",
   }
 
 

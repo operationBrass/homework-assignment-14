@@ -25,6 +25,7 @@ const routers = require('./routes');
 const app = express(); //app being convention for Express() 
 const PORT = process.env.PORT || 8000;
 
+app.use(express.static(path.join(__dirname, '/public'))); // retrieve css and js files automatically
 const helpers = require(path.join(__dirname,'/utils/helpers'));
 const hbs = exphbs.create({ helpers });
 
@@ -35,7 +36,7 @@ app.set('views', path.join(__dirname,'/views'));
 //setup sessions management middleware
 app.use(session({secret: "techBlogs ftw", resave:false, saveUninitialized:false})); //default false values for a session.
 
-app.use(express.static(path.join(__dirname, '/public'))); // retrieve css and js files automatically
+
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));

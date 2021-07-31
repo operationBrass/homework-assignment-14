@@ -14,11 +14,11 @@
 <body> 
    <section class="hero is-medium">
       <!-- Hero head: will stick at the top -->
-      <div class="hero-head">
+      <div class="hero-head has-background-info-light">
         <nav class="navbar">
           <div class="container">
             <div class="navbar-brand">
-         <P class="is-heading">The Tech Blog</P>
+         <P class="is-size-4 has-text-success">The Tech Blog</P>
               <span class="navbar-burger" data-target="navbarMenuHeroA">
                 <span></span>
                 <span></span>
@@ -44,8 +44,8 @@
                 New Post
               </a>
               </div>
-
-              <div class="navbar-end"></div>
+              </div>
+              
                 {{#if loggedIn}}
                 <a href="/members/logout" class="navbar-item">
                   Logout
@@ -55,6 +55,7 @@
                   Login
                 </a>
                 {{/if}} 
+                <div class="navbar-end"></div>
               </div>
             </div>
           </div>

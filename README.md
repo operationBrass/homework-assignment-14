@@ -2,7 +2,7 @@
 
 [![License: WTFPL](https://img.shields.io/badge/License-WTFPL-brightgreen.svg)](http://www.wtfpl.net/about/)
 
-![Employee Tracker CLI](./Assets/finalScreen.PNG)
+![Employee Tracker CLI](./assets/finalScreen.PNG)
 
 ### Description
 

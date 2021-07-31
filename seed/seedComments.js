@@ -38,7 +38,7 @@ const testComment =
   {
     content:"i mean it probably easier had you attended ALL the classes that week.. ",
     post_id:3,
-    member_id:3
+    member_id:2
   },
   {
     content:"ohhhh burn! ",

@@ -192,7 +192,7 @@ exports.member_guest = async function (req,res)
     {
       where:
       {
-        username: "guest@test.com",
+        username: "guest@iguess.com",
       }
 
     }).then((member) => {

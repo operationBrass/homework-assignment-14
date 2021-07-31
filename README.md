@@ -6,7 +6,10 @@
 
 ### Description
 
-Share your thoughts on the tech blog! Sign up or login as Guest its up to you. Manage your posts in the dashboard and respond to others!
+Share your thoughts on the Tech Blog!
+
+CMS-style blog site similar to a Wordpress site, where developers can publish their blog posts and comment on other developers’ posts as well.
+Modularized application following the Model-View-Controller (MVC) paradigm.
 
 ### Table of Contents
 
@@ -25,7 +28,7 @@ Get started on the Tech Blog [here](https://brasstech.herokuapp.com/)
 
 ## Technologies Used
 
-Sequelize, Node, MySQL, Handlebars, Bcrypt, Session
+Sequelize, Node, MySQL2, expresss-handlebars, bcrypt, express-session, dotENV
 
 ## Contributions
 

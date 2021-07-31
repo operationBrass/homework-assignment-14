@@ -14,8 +14,8 @@
         <p>{{this.heading}} - {{format_time this.createdAt}} {{format_date this.createdAt}}</p>
         </span>
         <span class="icon is-right"> 
-        <i id={{this.id}}-edit class="far fa-edit"></i> 
-        <i id={{this.id}}-delete class="far fa-trash-alt"></i>
+        <i id={{this.id}}-edit alt="edit" class="far fa-edit is-clickable is-large"></i> 
+        <a href=/members/delete/{{this.id}}><i id={{this.id}}-delete alt="delete" class="far fa-trash-alt is-clickable is-large"></i></a>
         </span>
       </div>
 
@@ -36,7 +36,7 @@
 
     <label class="label">Message</label>
     <div class="control">
-      <textarea name="content" class="textarea is-primary " value={{this.content}}></textarea>
+      <textarea name="content" class="textarea is-primary" value={{this.content}}></textarea>
     </div>
 
     <br/>

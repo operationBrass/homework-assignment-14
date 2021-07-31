@@ -153,6 +153,40 @@ if(req.session.loggedIn)
 }
 }
 
+exports.member_newComment = async function (req,res)
+{
+if(req.session.loggedIn)
+{
+   await Comment.create(
+   {       
+      content: req.body.content,
+      post_id: req.params.id,
+      member_id: req.session.userId
+         
+   }).then((arr) => {
+     res.redirect("/members/post/"+req.params.id);
+   })
+   
+   .catch((err) => console.log(err.message));
+}
+
+}
+
+exports.member_deletePost = async function (req,res)
+{
+  if(req.session.loggedIn)
+  {
+  await Post.destroy({where:{
+    id: req.params.id
+  }})
+  res.redirect("/members/dashboard");
+  }
+  else
+  {
+    res.redirect("/");
+  }
+}
+
 
 exports.member_createPost = async function (req,res)
 {
@@ -196,12 +230,14 @@ exports.member_updatePost = async function (req,res)
  
 }
 
+
+
 exports.member_viewPost = async function (req,res)
 {
 
   if(!req.session.loggedIn)
   {
-    res.redirect("/");
+    res.redirect(window.location.toString);
   }
 
   const getPost = await Post.findByPk(req.params.id,

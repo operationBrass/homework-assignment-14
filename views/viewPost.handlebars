@@ -19,7 +19,7 @@
     {{#each postToView.Comments}}  <!--traverse the comments attached to the post-->
         <article class="message block is-warning">
         <div class="message-body">
-          {{this.content}} ---- {{this.Member.username}} on {{format_time this.created_at}} {{format_date this.created_at}}
+         <p>{{this.content}} ---- {{this.Member.username}} {{format_date this.created_at}} @ {{format_time this.created_at}}</p>
         </div>  
       </article>
           {{/each}}

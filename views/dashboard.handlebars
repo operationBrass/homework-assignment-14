@@ -8,9 +8,9 @@
 {{else}}
   {{#each posts}}
 
-    <article class="message block is-link">
+    <article class="message block is-info">
 
-      <div class="message-header">
+      <div class="message-header is-half">
         <p>{{this.heading}} - {{format_time this.createdAt}} {{format_date this.createdAt}}</p>
         </span>
         <span class="icon is-right"> 
@@ -19,13 +19,13 @@
         </span>
       </div>
 
-      <div class="message-body">
+      <div class="message-body is-half">
         {{this.content}}
       </div>
 
     </article>
 
-  <div id={{this.id}}-div class="field is-hidden">
+  <div id={{this.id}}-div class="field is-hidden is-half">
     
     <form action=/members/edit/{{this.id}} method="POST" id="loginForm">
     <label class="label">Title</label>

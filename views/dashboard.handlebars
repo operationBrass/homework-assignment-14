@@ -26,23 +26,25 @@
     </article>
 
   <div id={{this.id}}-div class="field is-hidden">
-
+    
+    <form action=/members/edit/{{this.id}} method="POST" id="loginForm">
     <label class="label">Title</label>
 
     <div class="control">
-      <input class="input" type="text" placeholder="Text input">
+      <input name="heading" class="input" type="text" value={{this.heading}}>
     </div>
 
     <label class="label">Message</label>
     <div class="control">
-      <textarea class="textarea is-primary " placeholder="Textarea"></textarea>
+      <textarea name="content" class="textarea is-primary " value={{this.content}}></textarea>
     </div>
 
     <br/>
 
     <input id={{this.id}}-btn class="button" type="submit" value="Update Post">
-
+</form>
   </div>
+
 
   {{/each}}
 {{/if}}

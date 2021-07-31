@@ -151,13 +151,8 @@ if(req.session.loggedIn)
    
    .catch((err) => console.log(err.message));
 }
-
-else
- {
- res.redirect("/");
- }
-
 }
+
 
 exports.member_createPost = async function (req,res)
 {
@@ -171,6 +166,36 @@ exports.member_createPost = async function (req,res)
   }
 }
 
+exports.member_updatePost = async function (req,res)
+{
+
+  if(req.session.loggedIn)
+{
+  console.log(req.body)
+   await Post.update(
+   {
+           heading: req.body.heading,
+           content: req.body.content,
+           member_id: req.session.userId
+         
+   },
+   {
+   where: 
+   [
+     {
+       id: req.params.id
+     }
+   ],
+  }
+   ).then((arr) => {
+     res.redirect("/members/dashboard");
+   })
+   
+   .catch((err) => console.log(err.message));
+}
+ 
+}
+
 exports.member_viewPost = async function (req,res)
 {
 
@@ -178,7 +203,6 @@ exports.member_viewPost = async function (req,res)
   {
     res.redirect("/");
   }
-
 
   const getPost = await Post.findByPk(req.params.id,
   {
@@ -256,7 +280,8 @@ exports.member_logout = function logOut(req,res)
   }
 }
 
-function setSession(reqSession,userId) {
+function setSession(reqSession,userId) 
+{
   reqSession.loggedIn = true;
   reqSession.userId = userId;
   return;

@@ -8,7 +8,9 @@ router.get('/home',members.member_home);
 router.get('/logout',members.member_logout);
 router.get('/post/:id',members.member_viewPost);
 router.get('/createPost',members.member_createPost);
-router.post('/login', members.member_login); 
+router.post('/edit/:id', members.member_updatePost);  
+//router.post('/createComment', members.member_createComment);  
+router.post('/login', members.member_login);
 router.post('/signup', members.member_signup);
 router.post('/newPost',members.member_newPost);
 

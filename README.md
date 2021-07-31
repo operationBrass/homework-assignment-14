@@ -19,7 +19,7 @@ Share your thoughts on the tech blog! Sign up or login as Guest its up to you. M
 
 ## Usage Guide
 
-Deploy on [Heroku](https://brasstech.herokuapp.com/) This application demonstrates database management functions and both front and back end development. Also introducing handlebars for templates!
+Deployed on [Heroku](https://brasstech.herokuapp.com/) This application demonstrates database management functions and both front and back end development. Also introducing handlebars for templates!
 
 Get started on the Tech Blog [here](https://brasstech.herokuapp.com/)
 

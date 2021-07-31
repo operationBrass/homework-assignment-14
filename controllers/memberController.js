@@ -134,7 +134,32 @@ const getPosts = await Post.findAll(
   }
 }
 
-exports.member_new_post = async function (req,res)
+exports.member_newPost = async function (req,res)
+{
+if(req.session.loggedIn)
+{
+  console.log(req.body)
+   await Post.create(
+   {
+           heading: req.body.title,
+           content: req.body.content,
+           member_id: req.session.userId
+         
+   }).then((arr) => {
+     res.redirect("/members/dashboard");
+   })
+   
+   .catch((err) => console.log(err.message));
+}
+
+else
+ {
+ res.redirect("/");
+ }
+
+}
+
+exports.member_createPost = async function (req,res)
 {
   if(req.session.loggedIn)
   {
@@ -146,7 +171,7 @@ exports.member_new_post = async function (req,res)
   }
 }
 
-exports.member_view_post = async function (req,res)
+exports.member_viewPost = async function (req,res)
 {
 
   if(!req.session.loggedIn)

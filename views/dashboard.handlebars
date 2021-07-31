@@ -11,9 +11,7 @@
     <article class="message block is-link">
 
       <div class="message-header">
-        <p>{{this.heading}}</p>
-         <span class="icon is-right"> 
-        <p>{{this.Member.username}} {{format_time this.createdAt}} {{format_date this.createdAt}}</p>
+        <p>{{this.heading}} - {{format_time this.createdAt}} {{format_date this.createdAt}}</p>
         </span>
         <span class="icon is-right"> 
         <i id={{this.id}}-edit class="far fa-edit"></i> 
@@ -27,7 +25,7 @@
 
     </article>
 
-  <div id=div-{{this.id}} class="field is-hidden">
+  <div id={{this.id}}-div class="field is-hidden">
 
     <label class="label">Title</label>
 

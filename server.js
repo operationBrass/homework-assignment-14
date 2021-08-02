@@ -54,6 +54,7 @@ app.use(routers);//middleware to run routes
       await userSeed();
       await postSeeds();
       await commentSeeds();
+
       console.log("Database connected")
     })
     .catch((err) => {console.log("error", err)});

@@ -137,7 +137,7 @@ exports.member_newPost = async function (req,res)
 if(req.session.loggedIn)
 {
   
-   await Post.findOrCreate(
+   await Post.create(
    {
            heading: req.body.title,
            content: req.body.content,
